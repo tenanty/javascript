@@ -717,15 +717,24 @@ _.every([2, 4, 6], function(){return num % 2 == 0;});<button id="demo16">点击<
         <br>
         如果<b>list</b>中有任何一个元素通过 <b>predicate</b> 的真值检测就返回<i>true</i>。一旦找到了符合条件的元素, 就直接中断对list的遍历. 愚人码头注：如果存在原生的<b>some</b>方法，就使用原生的<b>some</b>。）
       </p>
-      <pre>_.some([null, 0, 'yes', false]);<button id="demo16">点击</button>
+      <pre>_.some([null, 0, 'yes', false]);<button id="demo17">点击</button>
        <script type="text/javascript">
-      $("#demo16").click(function(){
-    	  var odds = _.every([2, 4, 6],function(num){return num % 2 == 0;});
+      $("#demo17").click(function(){
+    	  var odds = _.some([null, 0, 'yes', false]);
     	  console.log(odds);
      	  alert(odds);
         });
       </script>
 =&gt; true
+_.some([null, 0, false]);<button id="demo18">点击</button>
+       <script type="text/javascript">
+      $("#demo18").click(function(){
+    	  var odds = _.some([null, 0, false]);
+    	  console.log(odds);
+     	  alert(odds);
+        });
+      </script>
+=&gt; false
 </pre>
 
       <p id="contains">
@@ -734,8 +743,24 @@ _.every([2, 4, 6], function(){return num % 2 == 0;});<button id="demo16">点击<
         <br>
         如果<b>list</b>包含指定的<b>value</b>则返回<i>true</i>（愚人码头注：使用===检测）。如果<b>list</b> 是数组，内部使用<b>indexOf</b>判断。
       </p>
-      <pre>_.contains([1, 2, 3], 3);
+      <pre>_.contains([1, 2, 3], 3);<button id="demo19">点击</button>
+       <script type="text/javascript">
+      $("#demo19").click(function(){
+    	  var odds = _.contains([1, 2, 3], 3);
+    	  console.log(odds);
+     	  alert(odds);
+        });
+      </script>
 =&gt; true
+_.contains([1, 2, 4], 3);<button id="demo20">点击</button>
+       <script type="text/javascript">
+      $("#demo20").click(function(){
+    	  var odds = _.contains([1, 2, 4], 3);
+    	  console.log(odds);
+     	  alert(odds);
+        });
+      </script>
+=&gt; false
 </pre>
 
       <p id="invoke">
@@ -746,7 +771,14 @@ _.every([2, 4, 6], function(){return num % 2 == 0;});<button id="demo16">点击<
         任何传递给<b>invoke</b>的额外参数，<b>invoke</b>都会在调用<b>methodName</b>方法的时候传递给它。
 
       </p>
-      <pre>_.invoke([[5, 1, 7], [3, 2, 1]], 'sort');
+      <pre>_.invoke([[5, 1, 7], [3, 2, 1]], 'sort');<button id="demo21">点击</button>
+       <script type="text/javascript">
+      $("#demo21").click(function(){
+    	  var odds = _.invoke([[5, 1, 7], [3, 2, 1]], 'sort');
+    	  console.log(JSON.stringify(odds));
+     	  alert(JSON.stringify(odds));
+        });
+      </script>
 =&gt; [[1, 5, 7], [1, 2, 3]]
 </pre>
 
@@ -756,8 +788,26 @@ _.every([2, 4, 6], function(){return num % 2 == 0;});<button id="demo16">点击<
         <b>pluck</b>也许是<b>map</b>最常使用的用例模型的简化版本，即萃取对象数组中某属性值，返回一个数组。
       </p>
       <pre>var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
-_.pluck(stooges, 'name');
+_.pluck(stooges, 'name');<button id="demo22">点击</button>
+       <script type="text/javascript">
+      $("#demo22").click(function(){
+    	  var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
+    	  var result = _.pluck(stooges, 'name');
+    	  console.log(JSON.stringify(result));
+     	  alert(JSON.stringify(result));
+        });
+      </script>
 =&gt; ["moe", "larry", "curly"]
+_.pluck(stooges, 'age');<button id="demo23">点击</button>
+       <script type="text/javascript">
+      $("#demo23").click(function(){
+    	  var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
+    	  var result = _.pluck(stooges, 'age');
+    	  console.log(JSON.stringify(result));
+     	  alert(JSON.stringify(result));
+        });
+      </script>
+=&gt; [40, 50, 60]
 </pre>
 
       <p id="max">
@@ -766,7 +816,15 @@ _.pluck(stooges, 'name');
          返回<b>list</b>中的最大值。如果传递<b>iterator</b>参数，<b>iterator</b>将作为<b>list</b>排序的依据。
       </p>
       <pre>var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
-_.max(stooges, function(stooge){ return stooge.age; });
+_.max(stooges, function(stooge){ return stooge.age; });<button id="demo24">点击</button>
+       <script type="text/javascript">
+      $("#demo24").click(function(){
+    	  var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
+    	  var result = _.max(stooges, function(stooge){ return stooge.age; });
+    	  console.log(JSON.stringify(result));
+     	  alert(JSON.stringify(result));
+        });
+      </script>
 =&gt; {name: 'curly', age: 60};
 </pre>
 
@@ -776,8 +834,27 @@ _.max(stooges, function(stooge){ return stooge.age; });
         返回<b>list</b>中的最小值。如果传递<b>iterator</b>参数，<b>iterator</b>将作为<b>list</b>排序的依据。
       </p>
       <pre>var numbers = [10, 5, 100, 2, 1000];
-_.min(numbers);
+_.min(numbers);<button id="demo25">点击</button>
+       <script type="text/javascript">
+      $("#demo25").click(function(){
+    	  var numbers = [10, 5, 100, 2, 1000];
+    	  var result = _.min(numbers);
+    	  console.log(JSON.stringify(result));
+     	  alert(JSON.stringify(result));
+        });
+      </script>
 =&gt; 2
+var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
+_.min(stooges, function(stooge){ return stooge.age; });<button id="demo26">点击</button>
+       <script type="text/javascript">
+      $("#demo26").click(function(){
+    	  var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
+    	  var result = _.min(stooges, function(stooge){ return stooge.age; });
+    	  console.log(JSON.stringify(result));
+     	  alert(JSON.stringify(result));
+        });
+      </script>
+=&gt; {name: 'moe', age: 40};
 </pre>
 
       <p id="sortBy">
@@ -785,7 +862,14 @@ _.min(numbers);
         <br>
         返回一个排序后的<b>list</b>拷贝副本。如果有<b>iterator</b>参数，<b>iterator</b>将作为<b>list</b>排序的依据。迭代器也可以是字符串的属性的名称进行排序的(比如 <tt>length</tt>)。
       </p>
-      <pre>_.sortBy([1, 2, 3, 4, 5, 6], function(num){ return Math.sin(num); });
+      <pre>_.sortBy([1, 2, 3, 4, 5, 6], function(num){ return Math.sin(num); });<button id="demo27">点击</button>
+       <script type="text/javascript">
+      $("#demo27").click(function(){
+    	  var result = _.sortBy([1, 2, 3, 4, 5, 6], function(num){ return Math.sin(num);});
+    	  console.log(JSON.stringify(result));
+     	  alert(JSON.stringify(result));
+        });
+      </script>
 =&gt; [5, 4, 6, 3, 1, 2]
 </pre>
 
@@ -794,13 +878,23 @@ _.min(numbers);
         <br>
         把一个集合分组为多个集合，通过 <b>iterator</b> 返回的结果进行分组. 如果 <b>iterator</b>  是一个字符串而不是函数, 那么将使用 <b>iterator</b> 作为各元素的属性名来对比进行分组.
       </p>
-      <pre>_.groupBy([1.3, 2.1, 2.4], function(num){ return Math.floor(num); });
+      <pre>_.groupBy([1.3, 2.1, 2.4], function(num){ return Math.floor(num); });<button id="demo28">点击</button>
+       <script type="text/javascript">
+      $("#demo28").click(function(){
+    	  var result = _.groupBy([1.3, 2.1, 2.4], function(num){ return Math.floor(num); });
+    	  console.log(JSON.stringify(result));
+     	  alert(JSON.stringify(result));
+        });
+      </script>
 =&gt; {1: [1.3], 2: [2.1, 2.4]}
 
 _.groupBy(['one', 'two', 'three'], 'length');
 =&gt; {3: ["one", "two"], 5: ["three"]}
 </pre>
-
+<font color="red">
+说明
+floor() 方法执行的是向下取整计算，它返回的是小于或等于函数参数，并且与之最接近的整数。
+</font>
       <p id="indexBy">
         <b class="header">indexBy</b><code>_.indexBy(list, iterator, [context])</code>
         <br>
@@ -808,7 +902,15 @@ _.groupBy(['one', 'two', 'three'], 'length');
         返回一个每一项索引的对象。和<a href="#groupBy">groupBy</a>非常像，但是当你知道你的键是唯一的时候可以使用<b>indexBy</b> 。
       </p>
       <pre>var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
-_.indexBy(stooges, 'age');
+_.indexBy(stooges, 'age');<button id="demo29">点击</button>
+       <script type="text/javascript">
+      $("#demo29").click(function(){
+    	  var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
+    	  var result = _.indexBy(stooges, 'age');
+    	  console.log(JSON.stringify(result));
+     	  alert(JSON.stringify(result));
+        });
+      </script>
 =&gt; {
   "40": {name: 'moe', age: 40},
   "50": {name: 'larry', age: 50},
@@ -821,7 +923,16 @@ _.indexBy(stooges, 'age');
         <br>
         排序一个列表组成一个组，并且返回各组中的对象的数量的计数。类似<tt>groupBy</tt>，但是不是返回列表的值，而是返回在该组中值的数目。
       </p>
-      <pre>_.countBy([1, 2, 3, 4, 5], function(num) {
+      <pre>_.countBy([1, 2, 3, 4, 5], function(num) {<button id="demo30">点击</button>
+       <script type="text/javascript">
+      $("#demo30").click(function(){
+    	  var result = _.countBy([1, 2, 3, 4, 5], function(num) {
+    		  return num % 2 == 0 ? 'even': 'odd';
+    	  });
+    	  console.log(JSON.stringify(result));
+     	  alert(JSON.stringify(result));
+        });
+      </script>
   return num % 2 == 0 ? 'even': 'odd';
 });
 =&gt; {odd: 3, even: 2}
@@ -833,7 +944,14 @@ _.indexBy(stooges, 'age');
         返回一个随机乱序的 <b>list</b> 副本, 使用
         <a href="http://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle">Fisher-Yates shuffle</a> 来进行随机乱序.
       </p>
-      <pre>_.shuffle([1, 2, 3, 4, 5, 6]);
+      <pre>_.shuffle([1, 2, 3, 4, 5, 6]);<button id="demo31">点击</button>
+       <script type="text/javascript">
+      $("#demo31").click(function(){
+    	  var result = _.shuffle([1, 2, 3, 4, 5, 6]);
+    	  console.log(JSON.stringify(result));
+     	  alert(JSON.stringify(result));
+        });
+      </script>
 =&gt; [4, 1, 6, 3, 5, 2]
 </pre>
 
@@ -842,10 +960,24 @@ _.indexBy(stooges, 'age');
         <br>
         从 <b>list</b>中产生一个随机样本。传递一个数字表示从<b>list</b>中返回<b>n</b>个随机元素。否则将返回一个单一的随机项。
       </p>
-      <pre>_.sample([1, 2, 3, 4, 5, 6]);
+      <pre>_.sample([1, 2, 3, 4, 5, 6]);<button id="demo32">点击</button>
+       <script type="text/javascript">
+      $("#demo32").click(function(){
+    	  var result = _.sample([1, 2, 3, 4, 5, 6]);
+    	  console.log(JSON.stringify(result));
+     	  alert(JSON.stringify(result));
+        });
+      </script>
 =&gt; 4
 
-_.sample([1, 2, 3, 4, 5, 6], 3);
+_.sample([1, 2, 3, 4, 5, 6], 3);<button id="demo33">点击</button>
+       <script type="text/javascript">
+      $("#demo33").click(function(){
+    	  var result = _.sample([1, 2, 3, 4, 5, 6], 3);
+    	  console.log(JSON.stringify(result));
+     	  alert(JSON.stringify(result));
+        });
+      </script>
 =&gt; [1, 6, 2]
 </pre>
 
@@ -854,16 +986,42 @@ _.sample([1, 2, 3, 4, 5, 6], 3);
         <br>
         把<b>list</b>(任何可以迭代的对象)转换成一个数组，在转换 <b>arguments</b> 对象时非常有用。
       </p>
-      <pre>(function(){ return _.toArray(arguments).slice(1); })(1, 2, 3, 4);
+      <pre>(function(){ return _.toArray(arguments).slice(1); })(1, 2, 3, 4);<button id="demo34">点击</button>
+       <script type="text/javascript">
+      $("#demo34").click(function(){
+    	  var result = (function(){ return _.toArray(arguments).slice(1); })(1, 2, 3, 4);
+    	  console.log(JSON.stringify(result));
+     	  alert(JSON.stringify(result));
+        });
+      </script>
 =&gt; [2, 3, 4]
 </pre>
-
+<font color="red">
+slice() 方法可从已有的数组中返回选定的元素。
+语法
+arrayObject.slice(start,end)
+参数	描述
+start	必需。规定从何处开始选取。如果是负数，那么它规定从数组尾部开始算起的位置。也就是说，-1 指最后一个元素，-2 指倒数第二个元素，以此类推。
+end	可选。规定从何处结束选取。该参数是数组片断结束处的数组下标。如果没有指定该参数，那么切分的数组包含从 start 到数组结束的所有元素。如果这个参数是负数，那么它规定的是从数组尾部开始算起的元素。
+返回值
+返回一个新的数组，包含从 start 到 end （不包括该元素）的 arrayObject 中的元素。
+说明
+请注意，该方法并不会修改数组，而是返回一个子数组。如果想删除数组中的一段元素，应该使用方法 Array.splice()。
+官方解释请见<a target="_blank" href="http://www.w3school.com.cn/jsref/jsref_slice_array.asp">http://www.w3school.com.cn/jsref/jsref_slice_array.asp</a>
+</font>
       <p id="size">
         <b class="header">size</b><code>_.size(list)</code>
         <br>
         返回<b>list</b>的长度。
       </p>
-      <pre>_.size({one: 1, two: 2, three: 3});
+      <pre>_.size({one: 1, two: 2, three: 3});<button id="demo35">点击</button>
+       <script type="text/javascript">
+      $("#demo35").click(function(){
+    	  var result = _.size({one: 1, two: 2, three: 3});
+    	  console.log(JSON.stringify(result));
+     	  alert(JSON.stringify(result));
+        });
+      </script>
 =&gt; 3
 </pre>
 
@@ -873,7 +1031,14 @@ _.sample([1, 2, 3, 4, 5, 6], 3);
         拆分一个数组（<b>array</b>）为两个数组： 
 &nbsp;第一个数组其元素都满足<b>predicate</b>迭代函数， 而第二个的所有元素均不能满足<b>predicate</b>迭代函数。
       </p>
-      <pre>_.partition([0, 1, 2, 3, 4, 5], isOdd);
+      <pre>_.partition([0, 1, 2, 3, 4, 5], isOdd);<button id="demo36">点击</button>
+       <script type="text/javascript">
+      $("#demo36").click(function(){
+    	  var result = _.partition([0, 1, 2, 3, 4, 5],function(num){return num%2 == 0;});
+    	  console.log(JSON.stringify(result));
+     	  alert(JSON.stringify(result));
+        });
+      </script>
 =&gt; [[1, 3, 5], [0, 2, 4]]
 </pre>
 
@@ -889,7 +1054,14 @@ _.sample([1, 2, 3, 4, 5, 6], 3);
         <br>
         返回<b>array（数组）</b>的第一个元素。传递 <b>n</b>参数将返回数组中从第一个元素开始的<b>n</b>个元素（愚人码头注：返回数组中前 <b>n</b> 个元素.）。
       </p>
-      <pre>_.first([5, 4, 3, 2, 1]);
+      <pre>_.first([5, 4, 3, 2, 1]);<button id="demo37">点击</button>
+       <script type="text/javascript">
+      $("#demo37").click(function(){
+    	  var result = _.first([5, 4, 3, 2, 1]);
+    	  console.log(JSON.stringify(result));
+     	  alert(JSON.stringify(result));
+        });
+      </script>
 =&gt; 5
 </pre>
 
@@ -898,8 +1070,24 @@ _.sample([1, 2, 3, 4, 5, 6], 3);
         <br>
         返回数组中除了最后一个元素外的其他全部元素。 在arguments对象上特别有用。传递 <b>n</b>参数将从结果中排除从最后一个开始的<b>n</b>个元素（愚人码头注：排除数组后面的 <b>n</b> 个元素）。
       </p>
-      <pre>_.initial([5, 4, 3, 2, 1]);
+      <pre>_.initial([5, 4, 3, 2, 1]);<button id="demo38">点击</button>
+       <script type="text/javascript">
+      $("#demo38").click(function(){
+    	  var result = _.initial([5, 4, 3, 2, 1]);
+    	  console.log(JSON.stringify(result));
+     	  alert(JSON.stringify(result));
+        });
+      </script>
 =&gt; [5, 4, 3, 2]
+.initial([5, 4, 3, 2, 1],3);<button id="demo39">点击</button>
+       <script type="text/javascript">
+      $("#demo39").click(function(){
+    	  var result = _.initial([5, 4, 3, 2, 1],3);
+    	  console.log(JSON.stringify(result));
+     	  alert(JSON.stringify(result));
+        });
+      </script>
+=&gt; [5, 4]
 </pre>
 
       <p id="last">
@@ -907,8 +1095,24 @@ _.sample([1, 2, 3, 4, 5, 6], 3);
         <br>
         返回<b>array（数组）</b>的最后一个元素。传递 <b>n</b>参数将返回数组中从最后一个元素开始的<b>n</b>个元素（愚人码头注：返回数组里的后面的<b>n</b>个元素）。
       </p>
-      <pre>_.last([5, 4, 3, 2, 1]);
+      <pre>_.last([5, 4, 3, 2, 1]);<button id="demo40">点击</button>
+       <script type="text/javascript">
+      $("#demo40").click(function(){
+    	  var result = _.last([5, 4, 3, 2, 1]);
+    	  console.log(JSON.stringify(result));
+     	  alert(JSON.stringify(result));
+        });
+      </script>
 =&gt; 1
+_.last([5, 4, 3, 2, 100]);<button id="demo41">点击</button>
+       <script type="text/javascript">
+      $("#demo41").click(function(){
+    	  var result = _.last([5, 4, 3, 2, 100]);
+    	  console.log(JSON.stringify(result));
+     	  alert(JSON.stringify(result));
+        });
+      </script>
+=&gt; 100
 </pre>
 
       <p id="rest">
@@ -917,8 +1121,24 @@ _.sample([1, 2, 3, 4, 5, 6], 3);
         <br>
         返回数组中除了第一个元素外的其他全部元素。传递 <b>index</b> 参数将返回从<b>index</b>开始的剩余所有元素 。（感谢<a href="http://weibo.com/heerake" target="_blank">@德德德德撸</a> 指出错误）
       </p>
-      <pre>_.rest([5, 4, 3, 2, 1]);
+      <pre>_.rest([5, 4, 3, 2, 1]);<button id="demo42">点击</button>
+       <script type="text/javascript">
+      $("#demo42").click(function(){
+    	  var result = _.rest([5, 4, 3, 2, 1]);
+    	  console.log(JSON.stringify(result));
+     	  alert(JSON.stringify(result));
+        });
+      </script>
 =&gt; [4, 3, 2, 1]
+_.rest([5, 4, 3, 2, 1]);<button id="demo43">点击</button>
+       <script type="text/javascript">
+      $("#demo43").click(function(){
+    	  var result = _.rest([5, 4, 3, 2, 1],2);
+    	  console.log(JSON.stringify(result));
+     	  alert(JSON.stringify(result));
+        });
+      </script>
+=&gt; [3, 2, 1]
 </pre>
 
       <p id="compact">
@@ -928,7 +1148,14 @@ _.sample([1, 2, 3, 4, 5, 6], 3);
         在javascript中, <i>false</i>, <i>null</i>, <i>0</i>, <i>""</i>,
         <i>undefined</i> 和 <i>NaN</i> 都是<i>false</i>值.
       </p>
-      <pre>_.compact([0, 1, false, 2, '', 3]);
+      <pre>_.compact([0, 1, false, 2, '', 3,null,undefined,NaN]);<button id="demo44">点击</button>
+       <script type="text/javascript">
+      $("#demo44").click(function(){
+    	  var result = _.compact([0, 1, false, 2, '', 3,null,undefined,NaN]);
+    	  console.log(JSON.stringify(result));
+     	  alert(JSON.stringify(result));
+        });
+      </script>
 =&gt; [1, 2, 3]
 </pre>
 
@@ -938,10 +1165,24 @@ _.sample([1, 2, 3, 4, 5, 6], 3);
         将一个嵌套多层的数组 <b>array（数组）</b> (嵌套可以是任何层数)转换为只有一层的数组。
         如果你传递 <b>shallow</b>参数，数组将只减少一维的嵌套。
       </p>
-      <pre>_.flatten([1, [2], [3, [[4]]]]);
+      <pre>_.flatten([1, [2], [3, [[4]]]]);<button id="demo45">点击</button>
+       <script type="text/javascript">
+      $("#demo45").click(function(){
+    	  var result = _.flatten([1, [2], [3, [[4]]]]);
+    	  console.log(JSON.stringify(result));
+     	  alert(JSON.stringify(result));
+        });
+      </script>
 =&gt; [1, 2, 3, 4];
 
-_.flatten([1, [2], [3, [[4]]]], true);
+_.flatten([1, [2], [3, [[4]]]], true);<button id="demo46">点击</button>
+       <script type="text/javascript">
+      $("#demo46").click(function(){
+    	  var result = _.flatten([1, [2], [3, [[4]]]], true);
+    	  console.log(JSON.stringify(result));
+     	  alert(JSON.stringify(result));
+        });
+      </script>
 =&gt; [1, 2, 3, [[4]]];
 </pre>
 
@@ -950,7 +1191,14 @@ _.flatten([1, [2], [3, [[4]]]], true);
         <br>
         返回一个删除所有<b>values</b>值的 <b>array</b>副本。（愚人码头注：使用<i>===</i>表达式做相等测试。）
       </p>
-      <pre>_.without([1, 2, 1, 0, 3, 1, 4], 0, 1);
+      <pre>_.without([1, 2, 1, 0, 3, 1, 4], 0, 1);<button id="demo47">点击</button>
+       <script type="text/javascript">
+      $("#demo47").click(function(){
+    	  var result = _.without([1, 2, 1, 0, 3, 1, 4], 0, 1);
+    	  console.log(JSON.stringify(result));
+     	  alert(JSON.stringify(result));
+        });
+      </script>
 =&gt; [2, 3, 4]
 </pre>
 
@@ -959,7 +1207,14 @@ _.flatten([1, [2], [3, [[4]]]], true);
         <br>
         返回传入的 <b>arrays（数组）</b>并集：按顺序返回，数组的元素是唯一的，可以传入一个或多个 <b>arrays（数组）</b>。
       </p>
-      <pre>_.union([1, 2, 3], [101, 2, 1, 10], [2, 1]);
+      <pre>_.union([1, 2, 3], [101, 2, 1, 10], [2, 1]);<button id="demo48">点击</button>
+       <script type="text/javascript">
+      $("#demo48").click(function(){
+    	  var result = _.union([1, 2, 3], [101, 2, 1, 10], [2, 1]);
+    	  console.log(JSON.stringify(result));
+     	  alert(JSON.stringify(result));
+        });
+      </script>
 =&gt; [1, 2, 3, 101, 10]
 </pre>
 
@@ -968,8 +1223,24 @@ _.flatten([1, [2], [3, [[4]]]], true);
         <br>
         返回传入 <b>arrays（数组）</b>交集。结果中的每个值是存在于传入的每个<b>arrays（数组）</b>里。
       </p>
-      <pre>_.intersection([1, 2, 3], [101, 2, 1, 10], [2, 1]);
+      <pre>_.intersection([1, 2, 3], [101, 2, 1, 10], [2, 1]);<button id="demo49">点击</button>
+       <script type="text/javascript">
+      $("#demo49").click(function(){
+    	  var result = _.intersection([1, 2, 3], [101, 2, 1, 10], [2, 1]);
+    	  console.log(JSON.stringify(result));
+     	  alert(JSON.stringify(result));
+        });
+      </script>
 =&gt; [1, 2]
+_.intersection([1, 2, 3], [101, 2, 1, 10], [2, 1],[4]);<button id="demo50">点击</button>
+       <script type="text/javascript">
+      $("#demo50").click(function(){
+    	  var result = _.intersection([1, 2, 3], [101, 2, 1, 10], [2, 1],[4]);
+    	  console.log(JSON.stringify(result));
+     	  alert(JSON.stringify(result));
+        });
+      </script>
+=&gt; []
 </pre>
 
       <p id="difference">
@@ -977,7 +1248,14 @@ _.flatten([1, [2], [3, [[4]]]], true);
         <br>
         类似于<b>without</b>，但返回的值来自<b>array</b>参数数组，并且不存在于<b>other</b> 数组.
       </p>
-      <pre>_.difference([1, 2, 3, 4, 5], [5, 2, 10]);
+      <pre>_.difference([1, 2, 3, 4, 5], [5, 2, 10]);<button id="demo51">点击</button>
+       <script type="text/javascript">
+      $("#demo51").click(function(){
+    	  var result = _.difference([1, 2, 3, 4, 5], [5, 2, 10]);
+    	  console.log(JSON.stringify(result));
+     	  alert(JSON.stringify(result));
+        });
+      </script>
 =&gt; [1, 3, 4]
 </pre>
 
@@ -987,7 +1265,14 @@ _.flatten([1, [2], [3, [[4]]]], true);
         <br>
        返回 <b>array</b>去重后的副本, 使用 <i>===</i> 做相等测试. 如果您确定  <b>array</b> 已经排序, 那么给 <b>isSorted</b> 参数传递 <i>true</i>值, 此函数将运行的更快的算法. 如果要处理对象元素, 传参 <b>iterator</b> 来获取要对比的属性.
       </p>
-      <pre>_.uniq([1, 2, 1, 3, 1, 4]);
+      <pre>_.uniq([1, 2, 1, 3, 1, 4]);<button id="demo52">点击</button>
+       <script type="text/javascript">
+      $("#demo52").click(function(){
+    	  var result = _.uniq([1, 2, 1, 3, 1, 4]);
+    	  console.log(JSON.stringify(result));
+     	  alert(JSON.stringify(result));
+        });
+      </script>
 =&gt; [1, 2, 3, 4]
 </pre>
 
@@ -996,10 +1281,25 @@ _.flatten([1, [2], [3, [[4]]]], true);
         <br>
          将 每个相应位置的<b>arrays</b>的值合并在一起。在合并分开保存的数据时很有用. 如果你用来处理矩阵嵌套数组时, <tt>_.zip.apply</tt> 可以做类似的效果。
       </p>
-      <pre>_.zip(['moe', 'larry', 'curly'], [30, 40, 50], [true, false, false]);
+      <pre>_.zip(['moe', 'larry', 'curly'], [30, 40, 50], [true, false, false]);<button id="demo53">点击</button>
+       <script type="text/javascript">
+      $("#demo53").click(function(){
+    	  var result = _.zip(['moe', 'larry', 'curly'], [30, 40, 50], [true, false, false]);
+    	  console.log(JSON.stringify(result));
+     	  alert(JSON.stringify(result));
+        });
+      </script>
 =&gt; [["moe", 30, true], ["larry", 40, false], ["curly", 50, false]]
-
-_.zip.apply(_, arrayOfRowsOfData);
+ var arrayOfRowsOfData = [['moe', 'larry', 'curly'], [30, 40, 50], [true, false, false]];
+_.zip.apply(_, arrayOfRowsOfData);<button id="demo54">点击</button>
+       <script type="text/javascript">
+      $("#demo54").click(function(){
+          var arrayOfRowsOfData = [['moe', 'larry', 'curly'], [30, 40, 50], [true, false, false]];
+    	  var result = _.zip.apply(_, arrayOfRowsOfData);
+    	  console.log(JSON.stringify(result));
+     	  alert(JSON.stringify(result));
+        });
+      </script>
 =&gt; arrayOfColumnsOfData
 </pre>
 
@@ -1009,10 +1309,24 @@ _.zip.apply(_, arrayOfRowsOfData);
         将数组转换为对象。传递任何一个单独<tt>[key, value]</tt>对的列表，或者一个键的列表和一个值得列表。
         如果存在重复键，最后一个值将被返回。
       </p>
-      <pre>_.object(['moe', 'larry', 'curly'], [30, 40, 50]);
+      <pre>_.object(['moe', 'larry', 'curly'], [30, 40, 50]);<button id="demo55">点击</button>
+       <script type="text/javascript">
+      $("#demo55").click(function(){
+    	  var result = _.object(['moe', 'larry', 'curly'], [30, 40, 50]);
+    	  console.log(JSON.stringify(result));
+     	  alert(JSON.stringify(result));
+        });
+      </script>
 =&gt; {moe: 30, larry: 40, curly: 50}
 
-_.object([['moe', 30], ['larry', 40], ['curly', 50]]);
+_.object([['moe', 30], ['larry', 40], ['curly', 50]]);<button id="demo56">点击</button>
+       <script type="text/javascript">
+      $("#demo56").click(function(){
+    	  var result = _.object([['moe', 30], ['larry', 40], ['curly', 50]]);
+    	  console.log(JSON.stringify(result));
+     	  alert(JSON.stringify(result));
+        });
+      </script>
 =&gt; {moe: 30, larry: 40, curly: 50}
 </pre>
 
@@ -1021,8 +1335,24 @@ _.object([['moe', 30], ['larry', 40], ['curly', 50]]);
         <br>
         返回<b>value</b>在该 <b>array</b> 中的索引值，如果<b>value</b>不存在 <b>array</b>中就返回<i>-1</i>。使用原生的<b>indexOf</b> 函数，除非它失效。如果您正在使用一个大数组，你知道数组已经排序，传递<tt>true</tt>给<b>isSorted</b>将更快的用二进制搜索..,或者，传递一个数字作为第三个参数，为了在给定的索引的数组中寻找第一个匹配值。
       </p>
-      <pre>_.indexOf([1, 2, 3], 2);
+      <pre>_.indexOf([1, 2, 3], 2);<button id="demo57">点击</button>
+       <script type="text/javascript">
+      $("#demo57").click(function(){
+    	  var result = _.indexOf([1, 2, 3], 2);
+    	  console.log(JSON.stringify(result));
+     	  alert(JSON.stringify(result));
+        });
+      </script>
 =&gt; 1
+_.indexOf([1, 2, 3], 11);<button id="demo58">点击</button>
+       <script type="text/javascript">
+      $("#demo58").click(function(){
+    	  var result = _.indexOf([1, 2, 3], 11);
+    	  console.log(JSON.stringify(result));
+     	  alert(JSON.stringify(result));
+        });
+      </script>
+=&gt; -1
 </pre>
 
       <p id="lastIndexOf">
@@ -1031,7 +1361,14 @@ _.object([['moe', 30], ['larry', 40], ['curly', 50]]);
         返回<b>value</b>在该 <b>array</b> 中的从最后开始的索引值，如果<b>value</b>不存在 <b>array</b>中就返回<i>-1</i>。如果支持原生的<b>lastIndexOf</b>，将使用原生的<b>lastIndexOf</b>函数。
         传递<b>fromIndex</b>将从你给定的索性值开始搜索。
       </p>
-      <pre>_.lastIndexOf([1, 2, 3, 1, 2, 3], 2);
+      <pre>_.lastIndexOf([1, 2, 3, 1, 2, 3], 2);<button id="demo59">点击</button>
+       <script type="text/javascript">
+      $("#demo59").click(function(){
+    	  var result = _.lastIndexOf([1, 2, 3, 1, 2, 3], 2);
+    	  console.log(JSON.stringify(result));
+     	  alert(JSON.stringify(result));
+        });
+      </script>
 =&gt; 4
 </pre>
 
@@ -1042,11 +1379,26 @@ _.object([['moe', 30], ['larry', 40], ['curly', 50]]);
         如果提供<b>iterator</b>函数，<b>iterator</b>将作为list排序的依据，包括你传递的<b>value</b> 。
         <b>iterator</b>也可以是字符串的属性名用来排序(比如<tt>length</tt>)。
       </p>
-      <pre>_.sortedIndex([10, 20, 30, 40, 50], 35);
+      <pre>_.sortedIndex([10, 20, 30, 40, 50], 35);<button id="demo60">点击</button>
+       <script type="text/javascript">
+      $("#demo60").click(function(){
+    	  var result = _.sortedIndex([10, 20, 30, 40, 50], 35);
+    	  console.log(JSON.stringify(result));
+     	  alert(JSON.stringify(result));
+        });
+      </script>
 =&gt; 3
 
 var stooges = [{name: 'moe', age: 40}, {name: 'curly', age: 60}];
-_.sortedIndex(stooges, {name: 'larry', age: 50}, 'age');
+_.sortedIndex(stooges, {name: 'larry', age: 50}, 'age');<button id="demo61">点击</button>
+       <script type="text/javascript">
+      $("#demo61").click(function(){
+    	  var stooges = [{name: 'moe', age: 40}, {name: 'curly', age: 60}];
+    	  var result =  _.sortedIndex(stooges, {name: 'larry', age: 50}, 'age');
+    	  console.log(JSON.stringify(result));
+     	  alert(JSON.stringify(result));
+        });
+      </script>
 =&gt; 1
 </pre>
 
@@ -1055,15 +1407,50 @@ _.sortedIndex(stooges, {name: 'larry', age: 50}, 'age');
         <br>
         一个用来创建整数灵活编号的列表的函数，便于<tt>each</tt> 和 <tt>map</tt>循环。如果省略<b>start</b>则默认为 <i>0</i>；<b>step</b> 默认为 <i>1</i>.返回一个从<b>start</b> 到<b>stop</b>的整数的列表，用<b>step</b>来增加 （或减少）独占。值得注意的是，如果<b>stop</b>值在<b>start</b>前面（也就是<b>stop</b>值小于<b>start</b>值），那么值域会被认为是零长度，而不是负增长。-如果你要一个负数的值域 ，请使用负数<b>step</b>.
       </p>
-      <pre>_.range(10);
+      <pre>_.range(10);<button id="demo62">点击</button>
+       <script type="text/javascript">
+      $("#demo62").click(function(){
+    	  var result = _.range(10);
+    	  console.log(JSON.stringify(result));
+     	  alert(JSON.stringify(result));
+        });
+      </script>
 =&gt; [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-_.range(1, 11);
+_.range(1, 11);<button id="demo63">点击</button>
+       <script type="text/javascript">
+      $("#demo63").click(function(){
+    	  var result = _.range(1, 11);
+    	  console.log(JSON.stringify(result));
+     	  alert(JSON.stringify(result));
+        });
+      </script>
 =&gt; [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-_.range(0, 30, 5);
+_.range(0, 30, 5);<button id="demo64">点击</button>
+       <script type="text/javascript">
+      $("#demo64").click(function(){
+    	  var result = _.range(0, 30, 5);
+    	  console.log(JSON.stringify(result));
+     	  alert(JSON.stringify(result));
+        });
+      </script>
 =&gt; [0, 5, 10, 15, 20, 25]
-_.range(0, -10, -1);
+_.range(0, -10, -1);<button id="demo65">点击</button>
+       <script type="text/javascript">
+      $("#demo65").click(function(){
+    	  var result = _.range(0, -10, -1);
+    	  console.log(JSON.stringify(result));
+     	  alert(JSON.stringify(result));
+        });
+      </script>
 =&gt; [0, -1, -2, -3, -4, -5, -6, -7, -8, -9]
-_.range(0);
+_.range(0);<button id="demo66">点击</button>
+       <script type="text/javascript">
+      $("#demo66").click(function(){
+    	  var result = _.range(0);
+    	  console.log(JSON.stringify(result));
+     	  alert(JSON.stringify(result));
+        });
+      </script>
 =&gt; []
 </pre>
 
@@ -1078,7 +1465,15 @@ _.range(0);
         这也被成为 <b>partial application</b>。<br>(愚人码头注：partial application翻译成“部分应用”或者“偏函数应用”。partial application可以被描述为一个函数，它接受一定数目的参数，绑定值到一个或多个这些参数，并返回一个新的函数，这个返回函数只接受剩余未绑定值的参数。参见：<a href="http://en.wikipedia.org/wiki/Partial_application" target="_blank">http://en.wikipedia.org/wiki/Partial_application</a>。感谢<a href="http://weibo.com/u/2654434300" target="_blank">@一任风月忆秋年</a>的建议)。
       </p>
       <pre>var func = function(greeting){ return greeting + ': ' + this.name };
-func = _.bind(func, {name: 'moe'}, 'hi');
+func = _.bind(func, {name: 'moe'}, 'hi');<button id="demo67">点击</button>
+       <script type="text/javascript">
+      $("#demo67").click(function(){
+    	  var func = function(greeting){ return greeting + ':' + this.name };
+    	  func = _.bind(func, {name: 'moe'}, 'hi');
+    	  console.log(JSON.stringify(func()));
+     	  alert(JSON.stringify(func()));
+        });
+      </script>
 func();
 =&gt; 'hi: moe'
 </pre>
@@ -1093,7 +1488,18 @@ func();
   onClick: function(){ alert('clicked: ' + this.label); },
   onHover: function(){ console.log('hovering: ' + this.label); }
 };
-_.bindAll(buttonView, 'onClick', 'onHover');
+_.bindAll(buttonView, 'onClick', 'onHover');<button id="demo68">点击</button><button id="underscore_button">temp</button>
+       <script type="text/javascript">
+      $("#demo68").click(function(){
+    	  var buttonView = {
+    			  label  : 'underscore',
+    			  onClick: function(){ alert('clicked: ' + this.label); },
+    			  onHover: function(){ console.log('hovering: ' + this.label); }
+    			};
+    	  _.bindAll(buttonView, 'onClick', 'onHover');
+    	  jQuery('#underscore_button').bind('click', buttonView.onClick);
+        });
+      </script>
 // When the button is clicked, this.label will have the correct value.
 jQuery('#underscore_button').bind('click', buttonView.onClick);
 </pre>
@@ -1108,7 +1514,15 @@ jQuery('#underscore_button').bind('click', buttonView.onClick);
         left open to supply at call-time.
       </p>
       <pre>var add = function(a, b) { return a + b; };
-add5 = _.partial(add, 5);
+add5 = _.partial(add, 5);<button id="demo69">点击</button>
+       <script type="text/javascript">
+      $("#demo69").click(function(){
+    	  var add = function(a, b) { return a + b; };
+    	  var add5 = _.partial(add, 5);
+    	  console.log(JSON.stringify(add5(10)));
+     	  alert(JSON.stringify(add5(10)));
+        });
+      </script>
 add5(10);
 =&gt; 15
 </pre>
@@ -1210,20 +1624,38 @@ _.each(notes, function(note) {
         执行代码, 调整参数然后附有条件地执行.
       </p>
       <pre>var hello = function(name) { return "hello: " + name; };
-hello = _.wrap(hello, function(func) {
+hello = _.wrap(hello, function(func) {<button id="demo98">点击</button>
+	<script type="text/javascript">
+		$("#demo98").click(function(){
+			var hello = function(name) { return "hello: " + name; };
+			hello = _.wrap(hello, function(func) {
+				return "before, " + func("moe") + ", after";
+			});
+			alert(JSON.stringify(hello()));
+			console.log(JSON.stringify(hello()));
+		});
+	</script>
   return "before, " + func("moe") + ", after";
 });
 hello();
 =&gt; 'before, hello: moe, after'
 </pre>
-
       <p id="negate">
         <b class="header">negate</b><code>_.negate(predicate)</code>
         <br>
         返回一个新的<b>predicate</b>函数的否定版本。
       </p>
       <pre>var isFalsy = _.negate(Boolean);
-_.find([-2, -1, 0, 1, 2], isFalsy);
+_.find([-2, -1, 0, 1, 2], isFalsy);<button id="demo99">点击</button>
+	<script type="text/javascript">
+		$("#demo99").click(function(){
+			var greet    = function(name){ return "hi: " + name; };
+			var exclaim  = function(statement){ return statement.toUpperCase() + "!"; };
+			var welcome = _.compose(greet, exclaim);
+			alert(welcome('moe'));
+			console.log(JSON.stringify(welcome('moe')));
+		});
+	</script>
 =&gt; 0
 </pre>
 
@@ -1237,11 +1669,20 @@ _.find([-2, -1, 0, 1, 2], isFalsy);
       </p>
       <pre>var greet    = function(name){ return "hi: " + name; };
 var exclaim  = function(statement){ return statement.toUpperCase() + "!"; };
-var welcome = _.compose(greet, exclaim);
+var welcome = _.compose(greet, exclaim);<button id="demo100">点击</button>
+	<script type="text/javascript">
+		$("#demo100").click(function(){
+			var greet    = function(name){ return "hi: " + name; };
+			var exclaim  = function(statement){ return statement.toUpperCase() + "!"; };
+			var welcome = _.compose(greet, exclaim);
+			alert(welcome('moe'));
+			console.log(JSON.stringify(welcome('moe')));
+		});
+	</script>
 welcome('moe');
 =&gt; 'hi: MOE!'
 </pre>
-
+<font color="red">从右向左调用相关函数</font>
       <h2 id="objects">对象函数（Object Functions）</h2>
 
       <p id="keys">
